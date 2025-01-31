@@ -11,6 +11,9 @@ class CreateUserView(generics.CreateAPIView):
     serializer_class = UserSerializer
     permission_classes = (AllowAny)
 
+    def perform_create(self, serializer):
+        serializer.save()
+
 class NoteListCreate(generics.CreateAPIView):
     serializer_class = NoteSerializer
     permission_classes = (IsAuthenticated)
