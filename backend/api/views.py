@@ -24,4 +24,11 @@ class NoteListCreate(generics.CreateAPIView):
             serializer.save(author=self.request.user)
         else:
             print (serializer.errors)
-            
+
+class NoteDelete(generics.DestroyAPIView):
+    queryset = Note.objects.all()
+    serializer_class = NoteSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Note.objects.filter(author=user)
