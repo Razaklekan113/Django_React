@@ -14,6 +14,13 @@ class CreateUserView(generics.CreateAPIView):
 class NoteListCreate(generics.CreateAPIView):
     serializer_class = NoteSerializer
     permission_classes = (IsAuthenticated)
+    
+    def perform_create(self, serializer):
+        if serializer.is_valid():
+            serializer.save(author=self.request.user)
+        else:
+            print (serializer.errors)
+            
 
     def get_queryset(self):
         user = self.request.user
