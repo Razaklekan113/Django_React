@@ -6,7 +6,7 @@ urlpatterns = [
     path("register/", CreateUserView.as_view(), name="register"),
     path("token/", TokenObtainPairView.as_view(), name="get_token"),
     path("token/refresh/", TokenRefreshView.as_view(), name="refresh"),
-
+    #note urls
     path("note_list/", NoteListCreate.as_view(), name="note-list"),
     path("note_create/", NoteListCreate.as_view(), name="note-create"),
     path("note/<int:pk>/", NoteDelete.as_view(), name="delete_note"),
