@@ -6,11 +6,6 @@ import { useState, useEffect } from "react";
 
 
 function ProtectedRoute({ children }) {
-    const [isAuthorized, setIsAuthorized] = useState(null);
-
-    useEffect(() => {
-        auth().catch(() => setIsAuthorized(false))
-    }, [])
 
     const refreshToken = async () => {
         const refreshToken = localStorage.getItem(REFRESH_TOKEN);
@@ -47,11 +42,7 @@ function ProtectedRoute({ children }) {
         }
     };
 
-    if (isAuthorized === null) {
-        return <div>Loading...</div>;
-    }
-
-    return isAuthorized ? children : <Navigate to="/login" />;
+    
 }
 
 export default ProtectedRoute;
