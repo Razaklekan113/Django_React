@@ -79,6 +79,7 @@ function Home() {
                 <input type="submit" value="Submit"></input>
             </form>
         </div>
+        
     );
 }
 
